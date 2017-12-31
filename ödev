@@ -1,0 +1,37 @@
+from PyQt4.QtGui import *
+from PyQt4.QtCore import *
+import random
+
+
+app = QApplication([])
+pencere = QWidget()
+pencere.setWindowTitle('randomşifreoluşturma')
+pushButton = QPushButton('Şifre oluştur')
+txtLabel = QLabel('şifre:')
+
+ 
+def şifregösterme():
+ 
+    txtLabel.setText(hakan)
+    
+    
+ 
+pencere.connect(pushButton, SIGNAL('pressed()'), şifregösterme)
+
+
+alphabet = "abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+pw_length = 8
+hakan = ""
+
+for i in range(pw_length):
+    next_index = random.randrange(len(alphabet))
+    hakan = hakan + alphabet[next_index]
+
+print(hakan)
+ 
+etiket = QHBoxLayout()
+etiket.addWidget(txtLabel)
+etiket.addWidget(pushButton)
+pencere.setLayout(etiket)
+pencere.show()
+app.exec_()
